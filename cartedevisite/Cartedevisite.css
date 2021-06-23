@@ -1,0 +1,113 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+
+}
+
+body{
+
+   background-color:black;
+   
+  
+
+}
+
+
+
+.container{
+  border: solid 3px rgb(113, 98, 157);
+  height:1000px;
+  width:1000px;
+  margin:100px 100px 0px 100px;
+  font-size:30px;
+  overflow:visible;
+  z-index: 1;
+  background-color:rgb(6, 23, 60);
+
+}
+
+.scroll{
+  width:60%;
+  height: 100px;
+  padding-top: 16px;
+  margin: 50px;
+  margin-left: 200px;
+  background-color: rgb(150, 139, 139);
+  animation-name: scrolldef;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  text-align: center;
+  border-radius: 15px;
+
+}
+
+@keyframes scrolldef {
+  0% {
+  transform: scale(0.8,0.8);
+  }
+  50% {
+  transform: scale(1, 1);
+  }
+  100% {
+  transform: scale(0.8,0.8);
+  }
+  }
+
+  .forme{
+
+    background-color:blue;
+    width:400px;
+    height:400px;
+  }
+
+  .icone {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.icone path:nth-child(1) {
+    stroke-dasharray: 2333px;
+    stroke-dashoffset: 2333px;
+    animation: anim 7s ease forwards;
+}
+@keyframes anim {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+#rotate{
+  position: absolute;
+  margin:300px 0 0 70px;
+  animation: rotation 30s linear infinite;
+
+
+}
+
+@keyframes rotation
+{
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+aside{
+  font-size: 20px;
+  position:absolute;
+  width:200px;
+  height: 400px;
+  background-color: red;
+  margin:400px 650px;
+  overflow:scroll;
+}
+
+button{
+
+  position: absolute;
+  margin:900px  696px;
+  width:100px;
+  height: 30px;
+  
+}
+ 
