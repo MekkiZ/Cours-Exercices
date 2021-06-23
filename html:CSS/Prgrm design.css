@@ -1,0 +1,53 @@
+p
+{
+    color:green;
+    font-weight: bold;
+    font-size: 1.5em;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+    text-align: center;
+   
+    text-shadow: 2px 2px 2px blue;
+
+
+
+}
+
+
+.intro
+{
+
+color: chocolate;
+
+font-variant-east-asian: full-width;
+}
+
+.logo
+{
+
+background-color: white;
+position: static;
+
+
+}
+
+body
+{
+
+background-color: rgb(255, 255, 255);
+
+
+}
+a:hover 
+{
+
+
+    color:green;
+}
+
+p:hover 
+
+{
+
+    border
+}
