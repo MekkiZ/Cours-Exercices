@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="nv.d3.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
+    <script src="nv.d3.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <style>
+        text {
+            font: 12px sans-serif;
+            text-decoration: none;
+            bottom: 0;
+
+            
+        }
+        svg {
+            display: block;
+        }
+        html, body, #data1, svg {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+
+    <title>graphLIvre</title>
+</head>
+<body>
+    <div id="data1">
+    <svg></svg>
+    </div>
+
+<script>
+
+$(document).ready(function(){
+    $.ajaxSetup({
+
+        async:false
+    });
+
+    function getData(){
+       
+
+        var tab = [] ; 
+
+        $.getJSON("https://opendata.paris.fr/api/records/1.0/search/?dataset=les-1000-titres-les-plus-reserves-dans-les-bibliotheques-de-pret&q=&rows=9&facet=type_de_document&facet=auteur",
+        function(data){
+
+            for (var i = 0; i < data.records.length; i++){
+                var x = data.records[i].fields.titre;
+                var y= data.records[i].fields.reservations;
+
+                tab.push({'x':x, 'y':y});
+                
+            }
+        });
+
+        return [
+
+        {
+            key : 'livres',
+            values : tab
+        }
+        ]
+
+    }
+
+    nv.addGraph(function() {
+        var chart = nv.models.discreteBarChart()
+            .x(function(d) { return d.x })
+            .y(function(d) { return d.y })
+            .staggerLabels(true)
+            //.staggerLabels(historicalBarChart[0].values.length > 8)
+            .showValues(true)
+            .duration(250)
+            ;
+
+        d3.select('#data1 svg')
+            
+            .attr('x', 40)
+            .attr('y', 30)
+            .datum(getData())
+            .call(chart);
+
+        nv.utils.windowResize(chart.update);
+        return chart;
+    });
+
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>
