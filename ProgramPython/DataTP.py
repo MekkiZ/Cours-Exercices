@@ -34,3 +34,26 @@ titre.set_fontsize(7)
 
 # On affiche notre chart avec toutes ses configurations
 plt.show()
+
+
+#second Graphe avec barres horizontal
+
+np.random.seed(19680801)
+
+
+plt.rcdefaults()
+fig, ax = plt.subplots()
+
+# Example data
+
+y_pos = np.arange(len(x_valeur))
+performance = y_valeur
+
+ax.barh(y_pos, performance, align='center')
+ax.set_yticks(y_pos)
+ax.set_yticklabels(x_valeur)
+ax.invert_yaxis()  # labels read top-to-bottom
+ax.set_xlabel('Nombres')
+ax.set_title('Combien de naissance')
+
+plt.show()
