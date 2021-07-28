@@ -18,7 +18,8 @@ for i in range(len(donner['records'])):
 
     x_valeur.append(anner)
     y_valeur.append(nb)
-    
+
+'''    
 print(x_valeur)
 
 plt.plot(x_valeur, y_valeur, color="green")
@@ -36,7 +37,7 @@ titre.set_fontsize(7)
 plt.show()
 
 
-#second Graphe avec barres horizontal
+#Graph pris dans la documentation de matplotlib
 
 np.random.seed(19680801)
 
@@ -44,16 +45,30 @@ np.random.seed(19680801)
 plt.rcdefaults()
 fig, ax = plt.subplots()
 
-# Example data
+#parti Data
 
 y_pos = np.arange(len(x_valeur))
 performance = y_valeur
 
-ax.barh(y_pos, performance, align='center')
-ax.set_yticks(y_pos)
+ax.barh(y_pos, performance, align='center', height=2)#parti ou on config les barre horizontal
+ax.set_yticks(y_pos)#position 
 ax.set_yticklabels(x_valeur)
 ax.invert_yaxis()  # labels read top-to-bottom
 ax.set_xlabel('Nombres')
 ax.set_title('Combien de naissance')
 
+plt.show()
+'''
+
+
+names = x_valeur
+values = y_valeur
+
+fig, axs = plt.subplots(1, 3, figsize=(9, 3), sharey=True)
+axs[0].bar(names, values)
+axs[1].scatter(names, values)
+axs[2].plot(names, values)
+plt.xticks(rotation='vertical') 
+fig.suptitle('Naissance à Paris')
+plt.ylim(ymin=3000) # On commence le Y par 15
 plt.show()
